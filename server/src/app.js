@@ -1,5 +1,6 @@
 const express = require('express')
 var createError = require("http-errors");
+require('dotenv').config()
 const app = express()
 const helmet = require("helmet")
 var path = require("path");
@@ -8,7 +9,10 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const cors = require("cors");
 
-const usersRouter = require("./v1/user/user.controller")
+require("../database/mongodb")
+
+const usersRouter = require("./v1/user/user.controller");
+
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs'); 
